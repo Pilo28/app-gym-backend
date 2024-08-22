@@ -1,0 +1,23 @@
+<div class="mb-4 flex items-center justify-between border-b bg-white p-4">
+  <div>
+    <span class="font-bold">Fecha:</span> {{ exerciseSet.date | date }}<br />
+    <span class="font-bold">Ejercicio:</span> {{ exerciseSet.exercise }}<br />
+    <span class="font-bold">Series:</span> {{ exerciseSet.sets }}<br />
+    <span class="font-bold">Repeticiones:</span> {{ exerciseSet.reps }}
+  </div>
+  <div class="flex items-center">
+    <button
+      class="mr-2 rounded bg-red-500 py-2 px-4 font-bold text-white hover:bg-red-700"
+      (click)="delete()"
+    >
+      Eliminar
+    </button>
+    <button
+      class="rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700"
+      (click)="newRep()"
+    >
+      Nueva Repetición
+    </button>
+
+  </div>
+</div>
