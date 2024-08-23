@@ -30,15 +30,16 @@ export class DiaryComponent {
   }
 
   addExerciseFormREactive(newSet: ExerciseSet) {
-    this.router.navigate(['/home/diary/new-reactive']);
+    this.router.navigate(['/home/diary/entry']);
   }
 
   deleteItem(id: string) {
-    this.exerciseSetsService.deleteItem(id).subscribe(() => {
-      this.exerciseList = this.exerciseList.filter(
-        (exerciseSet) => exerciseSet.id !== id
-      );
-    });
+    this.exerciseSetsService.deleteItem(id).subscribe();
+  }
+
+  editEntry(updateSet: ExerciseSet) {
+    const id = updateSet.id ?? '';
+    this.router.navigate([`/home/diary/entry/${id}`]);
   }
 
   newRep(updateSet: ExerciseSet) {

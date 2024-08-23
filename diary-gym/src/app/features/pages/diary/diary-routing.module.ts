@@ -5,16 +5,24 @@ import { NewEntryFormTemplateComponent } from '../../components/new-entry-form-t
 import { NewEntryFormReactiveComponent } from '../../components/new-entry-form-reactive/new-entry-form-reactive.component';
 
 const routes: Routes = [
-  {path:'', component: DiaryComponent},
-
+  {
+    path: '',
+    component: DiaryComponent,
+    title: 'Diary',
+  },
   {
     path: 'new-template',
     component: NewEntryFormTemplateComponent,
   },
-
   {
-    path: 'new-reactive',
+    path: 'entry',
     component: NewEntryFormReactiveComponent,
+    title: 'Entry Form',
+  },
+  {
+    path: 'entry/:id',
+    component: NewEntryFormReactiveComponent,
+    title: 'Edit Entry',
   },
 ];
 
