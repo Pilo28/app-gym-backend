@@ -1,6 +1,10 @@
 <div class="flex h-screen items-center justify-center bg-gray-200">
   <form (ngSubmit)="newEntry()" class="mx-auto max-w-sm rounded bg-gray-200 p-4">
-    <!-- Campo de fecha -->
+
+    <div class="mb-4">
+      New entry with Template-driven Form
+    </div>
+
     <div class="mb-4">
       <label for="date" class="block text-gray-700">Date</label>
       <input
@@ -12,7 +16,6 @@
       />
     </div>
 
-    <!-- Campo de ejercicio -->
     <div class="mb-4">
       <label for="exercise" class="block text-gray-700">Exercise</label>
       <input
@@ -24,7 +27,6 @@
       />
     </div>
 
-    <!-- Campo de series -->
     <div class="mb-4">
       <label for="sets" class="block text-gray-700">Sets</label>
       <input
@@ -36,7 +38,6 @@
       />
     </div>
 
-    <!-- Campo de repeticiones -->
     <div class="mb-4">
       <label for="reps" class="block text-gray-700">Reps</label>
       <input
@@ -48,7 +49,6 @@
       />
     </div>
 
-    <!-- Botón para enviar el formulario -->
     <div class="flex items-center justify-center">
       <button
         type="submit"

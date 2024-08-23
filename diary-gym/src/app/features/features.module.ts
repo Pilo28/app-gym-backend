@@ -8,16 +8,25 @@ import { ListEntriesComponent } from './components/list-entries/list-entries.com
 import { NewItemButtonComponent } from './components/new-item-button/new-item-button.component';
 import { NewEntryFormTemplateComponent } from './components/new-entry-form-template/new-entry-form-template.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewEntryFormReactiveComponent } from './components/new-entry-form-reactive/new-entry-form-reactive.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, EntryItemComponent, ListEntriesComponent, NewItemButtonComponent, NewEntryFormTemplateComponent],
+  declarations: [
+    HomeComponent,
+    EntryItemComponent,
+    ListEntriesComponent,
+    NewItemButtonComponent,
+    NewEntryFormTemplateComponent,
+    NewEntryFormReactiveComponent
+  ],
   imports: [
     CommonModule,
     FeaturesRoutingModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class FeaturesModule { }

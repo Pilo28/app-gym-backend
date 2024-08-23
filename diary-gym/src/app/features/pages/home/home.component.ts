@@ -29,6 +29,10 @@ export class HomeComponent {
     this.router.navigate(['/home/new-template']);
   }
 
+  addExerciseFormREactive(newSet: ExerciseSet) {
+    this.router.navigate(['/home/new-reactive']);
+  }
+
   deleteItem(id: string) {
     this.exerciseSetsService.deleteItem(id).subscribe(() => {
       this.exerciseList = this.exerciseList.filter(
