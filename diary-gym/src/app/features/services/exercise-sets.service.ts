@@ -19,7 +19,7 @@ export class ExerciseSetsService {
     return this.httpClient.get<ExerciseSetListAPI>(this.url);
   }
 
-  addNewItem(item: ExerciseSet): Observable<ExerciseSet> {
+  addNewItem(item: Partial<ExerciseSet>): Observable<ExerciseSet> {
     return this.httpClient.post<ExerciseSet>(this.url, item);
   }
 
