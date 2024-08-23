@@ -58,6 +58,15 @@
         >
           Sets is required and must be a positive number.
     </div>
+    <div
+        *ngIf="
+        entryForm.get('sets')?.errors?.['isNotMultiple'] &&
+        entryForm.get('sets')?.touched
+        "
+        class="mt-1 text-red-500"
+        >
+          sets is required and must be multiple of 2.
+  </div>
 
     <div class="mb-4">
       <label for="reps" class="block text-gray-700">Reps</label>
@@ -75,6 +84,15 @@
       >
         Reps is required and must be a positive number.
    </div>
+   <div
+      *ngIf="
+      entryForm.get('reps')?.errors?.['isNotMultiple'] &&
+      entryForm.get('reps')?.touched
+      "
+      class="mt-1 text-red-500"
+      >
+        Reps is required and must be multiple of 3.
+    </div>
 
     <div class="flex items-center justify-center">
       <button type="submit"

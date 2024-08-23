@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExerciseSetsService } from '../../services/exercise-sets.service';
 import { Router } from '@angular/router';
+import { multipleValidator } from '../../../shared/validators/custom-validation';
 
 @Component({
   selector: 'app-new-entry-form-reactive',
@@ -18,8 +19,8 @@ export class NewEntryFormReactiveComponent {
     this.entryForm = this.formBuilder.group({
       date: ['', Validators.required],
       exercise: ['', Validators.required],
-      sets: ['', [Validators.required, Validators.min(0)]],
-      reps: ['', [Validators.required, Validators.min(0)]],
+      sets: ['', [Validators.required, Validators.min(0), multipleValidator(2)]],
+      reps: ['', [Validators.required, Validators.min(0), multipleValidator(3)]],
     });
   }
 
