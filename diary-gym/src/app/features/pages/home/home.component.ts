@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ExerciseSet, ExerciseSetList } from '../../interfaces/exercise-set';
 import { ExerciseSetsService } from '../../services/exercise-sets.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,8 @@ import { ExerciseSetsService } from '../../services/exercise-sets.service';
 })
 export class HomeComponent {
   private exerciseSetsService = inject(ExerciseSetsService);
+  private router = inject(Router);
+
   exerciseList!: ExerciseSetList;
 
   ngOnInit(): void {
@@ -23,9 +26,7 @@ export class HomeComponent {
   }
 
   addExercise(newSet: ExerciseSet) {
-    this.exerciseSetsService
-      .addNewItem(newSet)
-      .subscribe((_) => this.newList());
+    this.router.navigate(['/home/new-template']);
   }
 
   deleteItem(id: string) {
