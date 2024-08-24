@@ -26,6 +26,5 @@ export class LoginComponent {
       },
       error: (e) => alert('User not Found'),
     });
-    console.log(loginValue);
   }
 }

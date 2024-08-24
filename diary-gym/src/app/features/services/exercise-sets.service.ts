@@ -1,7 +1,8 @@
 import { inject, Injectable } from '@angular/core';
-import { ExerciseSet, ExerciseSetList, ExerciseSetListAPI } from '../interfaces/exercise-set';
-import { HttpClient } from '@angular/common/http';
+import { ExerciseSet, ExerciseSetListAPI } from '../interfaces/exercise-set';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,12 @@ import { Observable } from 'rxjs';
 export class ExerciseSetsService {
 
   private httpClient = inject(HttpClient);
-  private url = 'http://localhost:3000/diary';
+  private url = 'diary';
 
   getInitialList(): Observable<ExerciseSetListAPI> {
-    return this.httpClient.get<ExerciseSetListAPI>(this.url);
+    const headers = new HttpHeaders().set('X-TELEMETRY', 'true');
+    return this.httpClient.get<ExerciseSetListAPI>(this.url, { headers });
   }
-
   refreshList(): Observable<ExerciseSetListAPI> {
     return this.httpClient.get<ExerciseSetListAPI>(this.url);
   }
