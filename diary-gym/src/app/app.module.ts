@@ -15,7 +15,7 @@ import { telemetryInterceptor } from './core/interceptors/telemetry/telemetry.in
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

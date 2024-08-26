@@ -12,6 +12,7 @@ export class EntryItemComponent {
   @Output() editEvent = new EventEmitter<ExerciseSet>();
   @Output() deleteEvent = new EventEmitter<string>();
 
+
   delete() {
     this.deleteEvent.emit(this.exerciseSet.id);
   }
