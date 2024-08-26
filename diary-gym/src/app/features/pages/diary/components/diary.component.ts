@@ -17,14 +17,14 @@ export class DiaryComponent implements OnInit {
 
   ngOnInit(): void {
     this.exerciseSetsService
-    this.route.data.subscribe(({ diaryApi }) => {
-      this.exerciseList = diaryApi.items;
+    this.route.data.subscribe(({ exerciseList }) => {
+      this.exerciseList = exerciseList;
     });
   }
   newList() {
     this.exerciseSetsService
       .refreshList()
-      .subscribe((dataApi) => (this.exerciseList = dataApi.items));
+      .subscribe((exerciseList) => (this.exerciseList = exerciseList));
   }
 
   addExercise(newSet: ExerciseSet) {

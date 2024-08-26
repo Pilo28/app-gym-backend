@@ -11,7 +11,7 @@ const routes: Routes = [
     path: '',
     component: DiaryComponent,
     title: 'Diary',
-    resolve: { diaryApi: diaryResolver },
+    resolve: { exerciseList: diaryResolver },
   },
   {
     path: 'new-template',
