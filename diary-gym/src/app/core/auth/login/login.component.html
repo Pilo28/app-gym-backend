@@ -11,7 +11,12 @@
         <input type="password" id="password" class="block w-full rounded border-gray-300 p-2 focus:border-blue-500 focus:outline-none" formControlName="password">
       </div>
       <div>
-        <button type="submit" class="bg-blue-500 text-white rounded px-4 py-2 w-full" [disabled]="loginForm.invalid" [class.opacity-50]="loginForm.invalid">Login</button>
+        <button type="submit"
+        class="bg-blue-500 text-white rounded px-4 py-2 w-full"
+        [disabled]="loginForm.invalid"
+        [class.opacity-50]="loginForm.invalid"
+        data-cy="submit"
+        >Login</button>
       </div>
     </form>
   </div>
