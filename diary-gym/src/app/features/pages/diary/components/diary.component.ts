@@ -36,8 +36,14 @@ export class DiaryComponent implements OnInit {
   }
 
   deleteItem(id: string) {
-    this.exerciseSetsService.deleteItem(id).subscribe();
+    this.exerciseSetsService.deleteItem(id).subscribe(() => {
+      this.exerciseList = this.exerciseList.filter(
+        (exerciseSet) => exerciseSet.id !== id
+      );
+    });
   }
+
+
 
   editEntry(updateSet: ExerciseSet) {
     const id = updateSet.id ?? '';
