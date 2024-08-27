@@ -1,2 +1,4 @@
-<app-loading-overlay *ngIf="loadService.isLoading"></app-loading-overlay>
-<router-outlet></router-outlet>
+@if (loadService.isLoading) {
+  <app-loading-overlay />
+ }
+ <router-outlet></router-outlet>

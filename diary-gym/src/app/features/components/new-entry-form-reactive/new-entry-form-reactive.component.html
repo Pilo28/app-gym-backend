@@ -16,12 +16,9 @@
         [min]="minDate"
       />
     </div>
-    <div
-        *ngIf="entryForm.get('date')?.invalid && entryForm.get('date')?.touched"
-        class="mt-1 text-red-500"
-        >
-          Date is required.
-    </div>
+    @if (entryForm.get('date')?.invalid && entryForm.get('date')?.touched) {
+      <div class="mt-1 text-red-500">Date is required</div>
+     }
 
     <div class="mb-4">
       <label for="exercise" class="block text-gray-700">Exercise</label>
@@ -33,27 +30,21 @@
         class="w-full p-2 border border-gray-300 rounded"
         (focus)="toggleSuggestions(true)"
       />
-      <ul
-        class="absolute z-10 mt-2 w-auto rounded border border-gray-300 bg-white"
-        *ngIf="showSuggestions"
-    >
-      <li
-        *ngFor="let suggestion of exercises$ | async"
-        class="cursor-pointer px-3 py-2 hover:bg-blue-500 hover:text-white"
-        (click)="selectExercise(suggestion.description)"
-      >
-        {{ suggestion.description }}
-      </li>
-    </ul>
-    </div>
-    <div
-        *ngIf="
-          entryForm.get('exercise')?.invalid &&
-          entryForm.get('exercise')?.touched
-        "
-        class="mt-1 text-red-500"
-        >
-          Exercise is required.
+
+      @if (showSuggestions) {
+        <ul class="absolute z-10 mt-2 w-auto rounded border border-gray-300 bg-white">
+        @for (suggestion of exercises$ | async; track suggestion.id) {
+          <li
+            class="cursor-pointer px-3 py-2 hover:bg-blue-500 hover:text-white"
+            (click)="selectExercise(suggestion.description)"
+          >
+            {{ suggestion.description }}
+          </li>
+        }
+        </ul>
+       } @if (entryForm.get('exercise')?.invalid && entryForm.get('exercise')?.touched) {
+        <div class="mt-1 text-red-500">Exercise is required.</div>
+       }
     </div>
 
     <div class="mb-4">
@@ -66,21 +57,12 @@
         class="w-full p-2 border border-gray-300 rounded"
       />
     </div>
-    <div
-        *ngIf="entryForm.get('sets')?.invalid && entryForm.get('sets')?.touched"
-        class="mt-1 text-red-500"
-        >
-          Sets is required and must be a positive number.
-    </div>
-    <div
-        *ngIf="
-        entryForm.get('sets')?.errors?.['isNotMultiple'] &&
-        entryForm.get('sets')?.touched
-        "
-        class="mt-1 text-red-500"
-        >
-          sets is required and must be multiple of 2.
-  </div>
+
+      @if (entryForm.get('sets')?.invalid && entryForm.get('sets')?.touched) {
+        <div class="mt-1 text-red-500">Sets is required and must be a positive number.</div>
+      } @if (entryForm.get('sets')?.errors?.['isNotMultiple'] && entryForm.get('sets')?.touched) {
+        <div class="mt-1 text-red-500">Sets is required and must be multiple of 3.</div>
+      }
 
     <div class="mb-4">
       <label for="reps" class="block text-gray-700">Reps</label>
@@ -92,21 +74,17 @@
         class="w-full p-2 border border-gray-300 rounded"
       />
     </div>
-    <div
-        *ngIf="entryForm.get('reps')?.invalid && entryForm.get('reps')?.touched"
-        class="mt-1 text-red-500"
-      >
+    @if (entryForm.get('reps')?.invalid && entryForm.get('reps')?.touched)
+        {
+        <div class="mt-1 text-red-500">
         Reps is required and must be a positive number.
-   </div>
-   <div
-      *ngIf="
-      entryForm.get('reps')?.errors?.['isNotMultiple'] &&
-      entryForm.get('reps')?.touched
-      "
-      class="mt-1 text-red-500"
-      >
+        </div>
+        }@if ( entryForm.get('reps')?.errors?.['isNotMultiple'] &&
+        entryForm.get('reps')?.touched) {
+        <div class="mt-1 text-red-500">
         Reps is required and must be multiple of 3.
-    </div>
+        </div>
+        }
 
     <div class="flex items-center justify-center">
       <button

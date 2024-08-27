@@ -1,14 +1,18 @@
 <section class="mb-8">
-  <h2 class="mb-4 text-xl font-bold">List of entries</h2>
-  <ul class="rounded border shadow">
-    <li *ngFor="let item of exerciseList; index as i; trackBy: itemTrackBy">
+    <h2 class="mb-4 text-xl font-bold">Lista de entradas</h2>
+    <ul class="rounded border shadow">
+    @for (item of exerciseList; track item.id) {
+    <li>
       <app-entry-item
         [exercise-set]="item"
         (deleteEvent)="deleteEvent.emit($event)"
-        (newRepEvent)="newRepEvent.emit($event)"
         (editEvent)="editEvent.emit($event)"
       />
     </li>
-
-  </ul>
-</section>
+    } @empty {
+      <div>
+      ¡No hay elementos!
+      </div>
+    }
+    </ul>
+ </section>
