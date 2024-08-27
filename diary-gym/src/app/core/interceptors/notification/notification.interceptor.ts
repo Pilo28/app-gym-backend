@@ -4,28 +4,31 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpEvent, HttpResponse } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 
-
 export const notificationInterceptor: HttpInterceptorFn = (request, next) => {
-
-  let toastDisplayed = false;
   const toaster = inject(ToastrService);
 
   const notificationUrls = ['diary'];
 
   return next(request).pipe(
     tap((event: HttpEvent<any>) => {
-      if (event instanceof HttpResponse &&
+      if (
+        event instanceof HttpResponse &&
         event.status === 200 &&
-        notificationUrls.some(url => event.url?.includes(url)) &&
-        !toastDisplayed
+        notificationUrls.some(url => event.url?.includes(url))
       ) {
-        if (!toastDisplayed) {
-          toaster.success('Bienvenido!');
-          toastDisplayed = true;
+        if (request.method === 'POST') {
+          toaster.success('¡Recurso creado con éxito!');
+        } else if (request.method === 'PUT' || request.method === 'PATCH') {
+          toaster.info('¡Recurso actualizado con éxito!');
+        } else if (request.method === 'DELETE') {
+          toaster.warning('¡Recurso eliminado con éxito!');
+        } else if (request.method === 'GET') {
+          const welcomeMessageShown = localStorage.getItem('welcomeMessageShown');
 
-          setTimeout(() => {
-            toastDisplayed = false;
-          }, 2000);
+          if (!welcomeMessageShown) {
+            toaster.success('¡Bienvenido!');
+            localStorage.setItem('welcomeMessageShown', 'true');
+          }
         }
       }
     })
