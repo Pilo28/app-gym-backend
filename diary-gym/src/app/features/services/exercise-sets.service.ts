@@ -37,8 +37,7 @@ export class ExerciseSetsService {
   }
 
   deleteItem(id: string): Observable<boolean> {
-    const headers = new HttpHeaders().set('X-LOADING', 'false');
-    return this.httpClient.delete<boolean>(`${this.url}/${id}`,  { headers });
+    return this.httpClient.delete<boolean>(`${this.url}/${id}`,);
   }
 
 
